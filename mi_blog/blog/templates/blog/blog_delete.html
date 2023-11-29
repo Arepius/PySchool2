@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %} {% block content %}
+<div class="mx-2">
+  <a href="{% url 'index' %}" class="btn btn-primary">Cancelar</a>
+</div>
+
+<div class="row">
+  <div class="col-md-6 col-11 mx-md-auto mx-3 mt-md-0 mt-3">
+    <h1>Eliminar publicación</h1>
+    <h3>¿Estás seguro que quieres eliminar la publicación?</h3>
+
+    <form method="POST">
+      {% csrf_token %}
+
+      <div class="d-grid">
+        <button class="btn btn-danger" type="submit">Sí, eliminar</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %} {% block content %}
+</div>
+<div class="container px-2 mt-2 col-3 mx-md-1">
+  <div class="justify-content-left">
+    <div class="grid gap-3 card p-4">
+      <div class="p-2 col-12">
+        <div class="card">
+          <img 
+            src="https://pbs.twimg.com/media/F_leGM4aYAA1Sd5?format=jpg&name=large" 
+            class="card-img-top" 
+            style="object-fit:contain;height: 400px;"
+            alt="Nah I'd win">
+          <div class="card-body">
+            <h5 class="card-title">Presentación</h5>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eos maxime quo earum incidunt, mollitia odio distinctio vero veritatis voluptatum ducimus veniam nesciunt, ab deleniti amet iste repellat reiciendis cum.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% for object in object_list %}
+<div class="row">
+  <div class="col-md-6 col-11 mx-md-auto mx-3 mt-5 mb-5">
+    <h3 class="fw-bold">{{ object.title }}</h3>
+    <p class="text-muted">{{ object.date }}</p>
+    <p class="text-muted">Publicado por {{ object.author.username }}</p>
+    {% if object.likes.count == 1 %}
+    <p class="text-muted">{{ object.likes.count }} like</p>
+    {% else %}
+    <p class="text-muted">{{ object.likes.count }} likes</p>
+    {% endif %}
+
+    <div class="my-3">{{ object.content|truncatewords_html:50|safe }}</div>
+
+    <a href="{% url 'detail_post' object.id %}">Leer más</a>
+  </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
